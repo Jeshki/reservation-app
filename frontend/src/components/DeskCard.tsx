@@ -75,6 +75,30 @@ export function DeskCard({ desk, currentDate, isSelected, onSelect, onReserve, o
     },
   }[tone];
 
+  const illustrationStyles = {
+    open: {
+      surface: 'fill-emerald-50 stroke-emerald-200',
+      panel: 'fill-white stroke-emerald-100',
+      chair: 'fill-white stroke-emerald-100',
+      accent: 'fill-emerald-500',
+      shadow: 'fill-emerald-100',
+    },
+    reserved: {
+      surface: 'fill-rose-50 stroke-rose-200',
+      panel: 'fill-white stroke-rose-100',
+      chair: 'fill-white stroke-rose-100',
+      accent: 'fill-rose-500',
+      shadow: 'fill-rose-100',
+    },
+    maintenance: {
+      surface: 'fill-slate-100 stroke-slate-200',
+      panel: 'fill-white stroke-slate-200',
+      chair: 'fill-white stroke-slate-200',
+      accent: 'fill-slate-500',
+      shadow: 'fill-slate-200',
+    },
+  }[tone];
+
   // Build the selectable date list for the user's reservation.
   const reservationDates = useMemo(
     () => generateDates(desk.myReservationStart, desk.myReservationEnd),
@@ -136,12 +160,20 @@ export function DeskCard({ desk, currentDate, isSelected, onSelect, onReserve, o
           </div>
 
           <div className="flex items-center justify-center">
-            <div className={clsx('relative h-16 w-32 sm:h-20 sm:w-36 rounded-2xl border shadow-sm', toneStyles.surface)}>
-              <div className="absolute left-1/2 top-2 h-4 w-12 -translate-x-1/2 rounded-md border border-white/70 bg-white/90 shadow-sm" />
-              <div className="absolute left-1/2 top-8 h-6 w-28 -translate-x-1/2 rounded-xl border border-white/70 bg-white/90 shadow-sm" />
-              <div className={clsx('absolute left-4 top-10 sm:top-12 h-5 w-5 sm:h-6 sm:w-6 rounded-lg border shadow-sm', toneStyles.chair)} />
-              <div className={clsx('absolute right-4 top-10 sm:top-12 h-5 w-5 sm:h-6 sm:w-6 rounded-lg border shadow-sm', toneStyles.chair)} />
-            </div>
+            <svg
+              viewBox="0 0 200 120"
+              className="h-20 w-36 sm:h-24 sm:w-40"
+              role="img"
+              aria-hidden="true"
+            >
+              <rect x="12" y="14" width="176" height="92" rx="18" className={clsx(illustrationStyles.shadow, 'opacity-60')} />
+              <rect x="10" y="12" width="180" height="96" rx="20" className={clsx(illustrationStyles.surface, 'stroke-2')} />
+              <rect x="52" y="26" width="96" height="26" rx="8" className={clsx(illustrationStyles.panel, 'stroke-2')} />
+              <rect x="64" y="60" width="72" height="20" rx="8" className={clsx(illustrationStyles.panel, 'stroke-2')} />
+              <rect x="24" y="44" width="30" height="30" rx="9" className={clsx(illustrationStyles.chair, 'stroke-2')} />
+              <rect x="146" y="44" width="30" height="30" rx="9" className={clsx(illustrationStyles.chair, 'stroke-2')} />
+              <circle cx="172" cy="28" r="6" className={illustrationStyles.accent} />
+            </svg>
           </div>
         </div>
 
