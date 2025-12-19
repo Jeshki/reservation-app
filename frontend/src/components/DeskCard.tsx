@@ -99,7 +99,7 @@ export function DeskCard({ desk, currentDate, isSelected, onSelect, onReserve, o
   return (
     <div
       className={clsx(
-        'group relative h-[16rem] sm:h-[18rem] overflow-hidden rounded-2xl border p-5 transition-all focus-ring',
+        'group relative h-auto sm:h-[18rem] overflow-hidden rounded-2xl border p-4 sm:p-5 transition-all focus-ring',
         toneStyles.card,
         toneStyles.ring,
         isSelected && 'ring-2 ring-amber-400 shadow-[0_0_0_4px_rgba(245,158,11,0.15)]'
@@ -130,15 +130,17 @@ export function DeskCard({ desk, currentDate, isSelected, onSelect, onReserve, o
           </div>
           <div>
             <div className="text-[10px] uppercase tracking-[0.3em] text-slate-500">Desk</div>
-            <div className={clsx('text-4xl font-semibold tracking-tight', toneStyles.accentText)}>{desk.number}</div>
+            <div className={clsx('text-3xl sm:text-4xl font-semibold tracking-tight', toneStyles.accentText)}>
+              {desk.number}
+            </div>
           </div>
 
           <div className="flex items-center justify-center">
-            <div className={clsx('relative h-20 w-36 rounded-2xl border shadow-sm', toneStyles.surface)}>
+            <div className={clsx('relative h-16 w-32 sm:h-20 sm:w-36 rounded-2xl border shadow-sm', toneStyles.surface)}>
               <div className="absolute left-1/2 top-2 h-4 w-12 -translate-x-1/2 rounded-md border border-white/70 bg-white/90 shadow-sm" />
               <div className="absolute left-1/2 top-8 h-6 w-28 -translate-x-1/2 rounded-xl border border-white/70 bg-white/90 shadow-sm" />
-              <div className={clsx('absolute left-4 top-12 h-6 w-6 rounded-lg border shadow-sm', toneStyles.chair)} />
-              <div className={clsx('absolute right-4 top-12 h-6 w-6 rounded-lg border shadow-sm', toneStyles.chair)} />
+              <div className={clsx('absolute left-4 top-10 sm:top-12 h-5 w-5 sm:h-6 sm:w-6 rounded-lg border shadow-sm', toneStyles.chair)} />
+              <div className={clsx('absolute right-4 top-10 sm:top-12 h-5 w-5 sm:h-6 sm:w-6 rounded-lg border shadow-sm', toneStyles.chair)} />
             </div>
           </div>
         </div>

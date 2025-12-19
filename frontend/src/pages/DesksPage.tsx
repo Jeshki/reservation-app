@@ -383,7 +383,7 @@ export function DesksPage() {
               {filteredDesks.map((desk, index) => (
                 <div
                   key={desk.deskId}
-                  className="animate-fade-up"
+                  className="animate-fade-up w-full max-w-[26rem] mx-auto sm:max-w-none sm:mx-0"
                   style={{ animationDelay: `${index * 40}ms` }}
                 >
                   <DeskCard

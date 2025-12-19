@@ -2,7 +2,7 @@
 
 @layer base {
   body {
-    @apply font-sans text-slate-900 bg-slate-50;
+    @apply font-sans text-slate-900 bg-slate-50 overflow-x-hidden;
   }
 }
 
