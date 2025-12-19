@@ -314,7 +314,6 @@ export function DeskPlan({ desks, selectedDeskId, onSelectDesk, onActivateDesk, 
           ref={stageRef}
           width={stageWidth}
           height={layout.height}
-          draggable
         >
           <Layer>
             <Rect
@@ -560,7 +559,7 @@ export function DeskPlan({ desks, selectedDeskId, onSelectDesk, onActivateDesk, 
         </Stage>
       </div>
       <p className="mt-3 text-xs text-slate-400">
-        Drag to pan, arrow keys to navigate, Enter to reserve.
+        Use arrow keys to navigate, Enter to reserve.
       </p>
     </section>
   );
