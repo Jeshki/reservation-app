@@ -54,4 +54,8 @@ cd frontend
 npx playwright install
 npm run e2e
 ```
-The E2E suite starts both backend and frontend dev servers automatically.
+The E2E suite starts both backend and frontend dev servers automatically and runs across
+Chromium, Firefox, WebKit, and mobile emulation (Pixel 5, iPhone 12).
+
+## CI
+GitHub Actions runs backend tests and Playwright E2E on every push and pull request.

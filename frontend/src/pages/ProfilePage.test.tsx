@@ -35,6 +35,9 @@ describe('ProfilePage', () => {
       pastReservations: [
         { reservationId: 2, deskNumber: 7, startDate: '2024-12-01', endDate: '2024-12-02' },
       ],
+      cancelledReservations: [
+        { reservationId: 3, deskNumber: 9, startDate: '2025-01-10', endDate: '2025-01-11' },
+      ],
     };
     mockedApi.getProfile.mockResolvedValue(profile);
 
@@ -45,8 +48,10 @@ describe('ProfilePage', () => {
     await waitFor(() => expect(screen.getByText(/John Smith/)).toBeInTheDocument());
     expect(screen.getByRole('heading', { name: /Active reservations/ })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /History/ })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Cancellations/ })).toBeInTheDocument();
     expect(screen.getByText(/Desk #5/)).toBeInTheDocument();
     expect(screen.getByText(/Desk #7/)).toBeInTheDocument();
+    expect(screen.getByText(/Desk #9/)).toBeInTheDocument();
     expect(screen.getByText('Active')).toBeInTheDocument();
   }, 15000);
 
@@ -65,6 +70,7 @@ describe('ProfilePage', () => {
       lastName: 'Adams',
       currentReservations: [],
       pastReservations: [],
+      cancelledReservations: [],
     });
 
     render(<ProfilePage />);
@@ -73,8 +79,10 @@ describe('ProfilePage', () => {
 
     expect(screen.getByRole('heading', { name: /Active reservations/ })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /^History$/ })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Cancellations/ })).toBeInTheDocument();
     expect(screen.getByText('No active reservations.')).toBeInTheDocument();
     expect(screen.getByText(/History is empty\./i)).toBeInTheDocument();
+    expect(screen.getByText(/No cancelled reservations\./i)).toBeInTheDocument();
   });
 });
 

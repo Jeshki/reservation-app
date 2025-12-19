@@ -201,6 +201,12 @@ public class BookingService
         {
             var item = _mapper.Map<ReservationDto>(r);
 
+            if (r.IsCancelled)
+            {
+                dto.CancelledReservations.Add(item);
+                continue;
+            }
+
             if (r.EndDate >= today) dto.CurrentReservations.Add(item);
             else dto.PastReservations.Add(item);
         }

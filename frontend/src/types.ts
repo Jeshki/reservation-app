@@ -37,4 +37,5 @@ export interface ProfileDto {
   lastName: string;
   currentReservations: ReservationDto[];
   pastReservations: ReservationDto[];
+  cancelledReservations: ReservationDto[];
 }

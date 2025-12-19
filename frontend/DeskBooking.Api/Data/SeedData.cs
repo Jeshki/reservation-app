@@ -14,14 +14,16 @@ public static class SeedData
 
         db.Users.Add(new User { Id = 2, FirstName = "Jane", LastName = "Doe" });
         db.Users.Add(new User { Id = 3, FirstName = "Michael", LastName = "Brown" });
+        db.Users.Add(new User { Id = 4, FirstName = "Laura", LastName = "Ivanova" });
+        db.Users.Add(new User { Id = 5, FirstName = "Carlos", LastName = "Mendez" });
         for (int i = 1; i <= 12; i++)
         {
             db.Desks.Add(new Desk
             {
                 Id = i,
                 Number = 100 + i,
-                IsInMaintenance = (i == 4),
-                MaintenanceMessage = (i == 4) ? "Desk under maintenance." : null
+                IsInMaintenance = (i == 4 || i == 11),
+                MaintenanceMessage = (i == 4 || i == 11) ? "Desk under maintenance." : null
             });
         }
 
@@ -40,6 +42,27 @@ public static class SeedData
                 UserId = 1,
                 StartDate = DateOnly.FromDateTime(DateTime.Today),
                 EndDate = DateOnly.FromDateTime(DateTime.Today.AddDays(2))
+            },
+            new Reservation
+            {
+                DeskId = 7,
+                UserId = 3,
+                StartDate = DateOnly.FromDateTime(DateTime.Today.AddDays(2)),
+                EndDate = DateOnly.FromDateTime(DateTime.Today.AddDays(4))
+            },
+            new Reservation
+            {
+                DeskId = 9,
+                UserId = 4,
+                StartDate = DateOnly.FromDateTime(DateTime.Today.AddDays(1)),
+                EndDate = DateOnly.FromDateTime(DateTime.Today.AddDays(1))
+            },
+            new Reservation
+            {
+                DeskId = 10,
+                UserId = 5,
+                StartDate = DateOnly.FromDateTime(DateTime.Today.AddDays(3)),
+                EndDate = DateOnly.FromDateTime(DateTime.Today.AddDays(5))
             }
         };
 

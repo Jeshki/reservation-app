@@ -7,6 +7,7 @@ public class ProfileDto
 
     public List<ReservationDto> CurrentReservations { get; set; } = new();
     public List<ReservationDto> PastReservations { get; set; } = new();
+    public List<ReservationDto> CancelledReservations { get; set; } = new();
 }
 
 public class ReservationDto

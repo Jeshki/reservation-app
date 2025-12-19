@@ -13,7 +13,13 @@ afterAll(() => {
 
 describe('api.getProfile', () => {
   it('fetches profile data', async () => {
-    const profile = { firstName: 'John', lastName: 'Smith', currentReservations: [], pastReservations: [] };
+    const profile = {
+      firstName: 'John',
+      lastName: 'Smith',
+      currentReservations: [],
+      pastReservations: [],
+      cancelledReservations: [],
+    };
     fetchMock.mockResolvedValue(new Response(JSON.stringify(profile), { status: 200 }));
 
     const result = await api.getProfile();
