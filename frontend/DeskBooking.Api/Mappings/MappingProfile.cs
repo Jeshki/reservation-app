@@ -12,6 +12,7 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<Reservation, ReservationDto>()
+            .ForMember(dest => dest.ReservationId, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.DeskNumber, opt => opt.MapFrom(src => src.Desk.Number));
     }
 }

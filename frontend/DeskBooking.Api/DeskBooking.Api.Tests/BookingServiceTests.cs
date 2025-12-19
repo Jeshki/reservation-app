@@ -337,7 +337,9 @@ public class BookingServiceTests
         Assert.Equal("John", profile.FirstName);
         Assert.Single(profile.CurrentReservations);
         Assert.Single(profile.PastReservations);
+        Assert.Equal(50, profile.CurrentReservations.Single().ReservationId);
         Assert.Equal(1, profile.CurrentReservations.Single().DeskNumber);
+        Assert.Equal(51, profile.PastReservations.Single().ReservationId);
         Assert.Equal(2, profile.PastReservations.Single().DeskNumber);
     }
 }

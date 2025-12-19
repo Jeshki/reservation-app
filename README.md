@@ -47,3 +47,11 @@ npm test
 ```bash
 dotnet test frontend/DeskBooking.Api/DeskBooking.Api.Tests/DeskBooking.Api.Tests.csproj
 ```
+
+### E2E (Playwright)
+```bash
+cd frontend
+npx playwright install
+npm run e2e
+```
+The E2E suite starts both backend and frontend dev servers automatically.

@@ -51,6 +51,8 @@ public class ControllersTests
         var ok = Assert.IsType<OkObjectResult>(result.Result);
         var profile = Assert.IsType<ProfileDto>(ok.Value);
         Assert.False(string.IsNullOrWhiteSpace(profile.FirstName));
+        Assert.NotEmpty(profile.CurrentReservations);
+        Assert.All(profile.CurrentReservations, r => Assert.True(r.ReservationId > 0));
     }
 
     [Fact]

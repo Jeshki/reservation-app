@@ -12,6 +12,8 @@ dist/
 dist-ssr/
 build/
 coverage/
+playwright-report/
+test-results/
 *.local
 .env
 .env.*
