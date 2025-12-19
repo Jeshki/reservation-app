@@ -379,11 +379,11 @@ export function DesksPage() {
               )}
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center sm:justify-items-stretch">
               {filteredDesks.map((desk, index) => (
                 <div
                   key={desk.deskId}
-                  className="animate-fade-up w-full max-w-[26rem] mx-auto sm:max-w-none sm:mx-0"
+                  className="animate-fade-up w-full max-w-[26rem] sm:max-w-none"
                   style={{ animationDelay: `${index * 40}ms` }}
                 >
                   <DeskCard

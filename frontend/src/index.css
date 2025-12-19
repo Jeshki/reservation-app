@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    @apply overflow-x-hidden;
+  }
+
   body {
     @apply font-sans text-slate-900 bg-slate-50 overflow-x-hidden;
   }

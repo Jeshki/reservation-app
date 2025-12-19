@@ -99,7 +99,7 @@ export function DeskCard({ desk, currentDate, isSelected, onSelect, onReserve, o
   return (
     <div
       className={clsx(
-        'group relative h-auto sm:h-[18rem] overflow-hidden rounded-2xl border p-4 sm:p-5 transition-all focus-ring',
+        'group relative w-full h-auto sm:h-[18rem] overflow-hidden rounded-2xl border p-4 sm:p-5 transition-all focus-ring',
         toneStyles.card,
         toneStyles.ring,
         isSelected && 'ring-2 ring-amber-400 shadow-[0_0_0_4px_rgba(245,158,11,0.15)]'
