@@ -86,7 +86,10 @@ export function DeskPlan({ desks, selectedDeskId, onSelectDesk, onActivateDesk, 
     if (!element) return;
 
     const updateSize = () => {
-      const next = Math.max(320, Math.floor(element.getBoundingClientRect().width));
+      const containerWidth = Math.floor(element.getBoundingClientRect().width);
+      const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : containerWidth;
+      const maxWidth = Math.max(280, viewportWidth - 32);
+      const next = Math.max(280, Math.min(containerWidth, maxWidth));
       setStageWidth(next);
     };
 
@@ -367,7 +370,7 @@ export function DeskPlan({ desks, selectedDeskId, onSelectDesk, onActivateDesk, 
 
       <div
         ref={containerRef}
-        className="w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 focus-ring"
+        className="w-full max-w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 focus-ring"
         tabIndex={0}
         onKeyDown={handleKeyDown}
         aria-label="Desk plan. Use arrow keys to move. Press Enter to reserve."
