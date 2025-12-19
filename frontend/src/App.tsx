@@ -34,20 +34,26 @@ function Navbar() {
     : "text-slate-600 hover:text-slate-900 hover:bg-emerald-50";
 
   return (
-    <nav className="sticky top-0 z-40 mb-8 border-b border-white/60 bg-white/80 backdrop-blur-lg shadow-sm">
-      <div className="container mx-auto px-6 h-16 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2 text-xl font-semibold text-slate-900 tracking-tight focus-ring rounded-full px-1">
+    <nav className="sticky top-0 z-40 mb-6 sm:mb-8 border-b border-white/60 bg-white/80 backdrop-blur-lg shadow-sm">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-0 sm:h-16 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+        <Link to="/" className="flex items-center gap-2 text-lg sm:text-xl font-semibold text-slate-900 tracking-tight focus-ring rounded-full px-1">
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-sm">
             <Squares2X2Icon className="h-5 w-5" />
           </span>
           Desk<span className="text-emerald-600">Booking</span>
         </Link>
-        <div className="flex gap-2">
-          <Link to="/" className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-colors focus-ring ${isActive('/')}`}>
+        <div className="flex flex-wrap gap-2">
+          <Link
+            to="/"
+            className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors focus-ring ${isActive('/')}`}
+          >
             <Squares2X2Icon className="h-4 w-4" />
             Desks
           </Link>
-          <Link to="/profile" className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-colors focus-ring ${isActive('/profile')}`}>
+          <Link
+            to="/profile"
+            className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors focus-ring ${isActive('/profile')}`}
+          >
             <UserCircleIcon className="h-4 w-4" />
             My Profile
           </Link>

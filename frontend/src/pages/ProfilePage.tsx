@@ -22,8 +22,8 @@ export function ProfilePage() {
   if (!profile) return <div className="p-10 text-center text-rose-500">Error.</div>;
 
   return (
-    <div className="container mx-auto px-6 py-6 max-w-6xl">
-      <div className="relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-gradient-to-br from-white via-white/95 to-emerald-50/70 p-8 shadow-xl">
+    <div className="container mx-auto px-4 sm:px-6 py-5 sm:py-6 max-w-6xl">
+      <div className="relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-gradient-to-br from-white via-white/95 to-emerald-50/70 p-5 sm:p-8 shadow-xl">
         <div className="absolute -left-20 -bottom-16 h-56 w-56 rounded-full bg-emerald-200/40 blur-3xl" />
         <div className="absolute -right-16 -top-20 h-56 w-56 rounded-full bg-sky-100/60 blur-3xl" />
 
@@ -34,12 +34,12 @@ export function ProfilePage() {
             </div>
             <div>
               <div className="text-xs uppercase tracking-[0.35em] text-slate-500">Profile</div>
-              <h1 className="text-3xl md:text-4xl font-semibold text-slate-900">My Profile</h1>
-              <p className="text-xl text-slate-600">{profile.firstName} {profile.lastName}</p>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900">My Profile</h1>
+              <p className="text-base sm:text-xl text-slate-600">{profile.firstName} {profile.lastName}</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 w-full max-w-md">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full max-w-md">
             <SummaryCard label="Active" value={profile.currentReservations.length} tone="emerald" />
             <SummaryCard label="History" value={profile.pastReservations.length} tone="slate" />
             <SummaryCard label="Cancelled" value={profile.cancelledReservations.length} tone="rose" />
@@ -133,7 +133,7 @@ function ReservationList({
           key={r.reservationId}
           className={`p-4 rounded-2xl border ${cardStyles[variant]}`}
         >
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="flex items-center gap-3">
               <div className={`h-10 w-10 rounded-xl flex items-center justify-center ${badge.iconClass}`}>
                 <MapPinIcon className="h-5 w-5" />
@@ -143,7 +143,7 @@ function ReservationList({
                 <p className="text-sm text-slate-500">{formatDateRange(r.startDate, r.endDate)}</p>
               </div>
             </div>
-            <div className={`text-xs px-3 py-1 rounded-full font-semibold ${badge.className}`}>
+            <div className={`text-xs px-3 py-1 rounded-full font-semibold self-start sm:self-auto ${badge.className}`}>
               {badge.label}
             </div>
           </div>
@@ -194,7 +194,7 @@ function SectionCard({
   };
 
   return (
-    <section className="rounded-3xl border border-white/60 bg-white/90 p-5 shadow-lg">
+    <section className="rounded-3xl border border-white/60 bg-white/90 p-4 sm:p-5 shadow-lg">
       <h2 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-3">
         <span className={`h-9 w-9 rounded-2xl flex items-center justify-center ${tones[tone]}`}>
           {icon}

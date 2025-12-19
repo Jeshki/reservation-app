@@ -312,27 +312,27 @@ export function DeskPlan({ desks, selectedDeskId, onSelectDesk, onActivateDesk, 
     : 0;
 
   return (
-    <section className="rounded-3xl border border-white/60 bg-white/90 p-6 shadow-lg">
+    <section className="rounded-3xl border border-white/60 bg-white/90 p-4 sm:p-6 shadow-lg">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between mb-4">
         <div className="space-y-1">
-          <div className="text-xs uppercase tracking-[0.3em] text-slate-500">2D plan</div>
-          <h2 className="text-2xl font-semibold text-slate-900">Office floor map</h2>
+          <div className="text-[11px] sm:text-xs uppercase tracking-[0.3em] text-slate-500">2D plan</div>
+          <h2 className="text-xl sm:text-2xl font-semibold text-slate-900">Office floor map</h2>
           <p className="text-sm text-slate-500">{hoveredTitle}</p>
           <p className="text-xs text-slate-400">{hoveredSubtitle}</p>
-          <div className="inline-flex items-center gap-2 rounded-full bg-amber-100 text-amber-700 px-3 py-1 text-xs font-semibold" aria-live="polite">
+          <div className="inline-flex items-center gap-2 rounded-full bg-amber-100 text-amber-700 px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold" aria-live="polite">
             {selectionLabel}
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-500">
-          <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 text-emerald-700 px-3 py-1">
+          <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 text-emerald-700 px-2 sm:px-3 py-1 text-[11px] sm:text-xs">
             <span className="h-2 w-2 rounded-full bg-emerald-500" />
             Open {statusCounts.open}
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-rose-100 text-rose-700 px-3 py-1">
+          <span className="inline-flex items-center gap-2 rounded-full bg-rose-100 text-rose-700 px-2 sm:px-3 py-1 text-[11px] sm:text-xs">
             <span className="h-2 w-2 rounded-full bg-rose-500" />
             Reserved {statusCounts.reserved}
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-slate-200 text-slate-700 px-3 py-1">
+          <span className="inline-flex items-center gap-2 rounded-full bg-slate-200 text-slate-700 px-2 sm:px-3 py-1 text-[11px] sm:text-xs">
             <span className="h-2 w-2 rounded-full bg-slate-500" />
             Maintenance {statusCounts.maintenance}
           </span>

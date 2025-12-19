@@ -196,15 +196,15 @@ export function DesksPage() {
   const isFiltering = searchTerm.trim().length > 0 || onlyOpen || onlyMine || onlyWindow;
 
   return (
-    <div className={clsx('container mx-auto px-6 py-6', highContrast && 'high-contrast')}>
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-10">
+    <div className={clsx('container mx-auto px-4 sm:px-6 py-5 sm:py-6', highContrast && 'high-contrast')}>
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-6 sm:mb-10">
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-600 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-3 py-1 text-[10px] sm:text-xs font-semibold text-slate-600 shadow-sm">
             <Squares2X2Icon className="h-4 w-4 text-slate-500" />
             Office layout
           </div>
-          <h1 className="text-3xl md:text-4xl font-semibold text-slate-900">Choose your desk</h1>
-          <p className="text-slate-600 max-w-xl">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900">Choose your desk</h1>
+          <p className="text-sm sm:text-base text-slate-600 max-w-xl">
             Pick an available desk and reserve it for a specific day or range. Hover a desk to see details.
           </p>
         </div>
@@ -214,23 +214,27 @@ export function DesksPage() {
             <CalendarDaysIcon className="h-4 w-4" />
             Dates
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <label className="text-sm font-medium text-slate-600">From</label>
-            <DatePicker
-              id="filter-from"
-              ariaLabel="Filter start date"
-              value={filterDate}
-              onChange={setFilterDate}
-              className="px-3 py-2 rounded-lg bg-white/90 focus-ring"
-            />
-            <label className="text-sm font-medium text-slate-600">To</label>
-            <DatePicker
-              id="filter-to"
-              ariaLabel="Filter end date"
-              value={filterDateTo}
-              onChange={setFilterDateTo}
-              className="px-3 py-2 rounded-lg bg-white/90 focus-ring"
-            />
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="flex items-center gap-2">
+              <label className="text-sm font-medium text-slate-600 min-w-[3rem]">From</label>
+              <DatePicker
+                id="filter-from"
+                ariaLabel="Filter start date"
+                value={filterDate}
+                onChange={setFilterDate}
+                className="w-full sm:w-auto px-3 py-2 rounded-lg bg-white/90 focus-ring"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <label className="text-sm font-medium text-slate-600 min-w-[1.5rem]">To</label>
+              <DatePicker
+                id="filter-to"
+                ariaLabel="Filter end date"
+                value={filterDateTo}
+                onChange={setFilterDateTo}
+                className="w-full sm:w-auto px-3 py-2 rounded-lg bg-white/90 focus-ring"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -238,14 +242,14 @@ export function DesksPage() {
       <div className="flex flex-col gap-4 rounded-2xl border border-white/60 bg-white/90 p-4 shadow-lg mb-8">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div className="flex flex-col sm:flex-row gap-3">
-            <div className="relative">
+            <div className="relative w-full sm:w-auto">
               <MagnifyingGlassIcon className="h-4 w-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
                 placeholder="Search desk number"
-                className="w-52 rounded-xl border border-slate-200 bg-white px-9 py-2 text-sm text-slate-700 focus-ring"
+                className="w-full sm:w-52 rounded-xl border border-slate-200 bg-white px-9 py-2 text-sm text-slate-700 focus-ring"
               />
             </div>
             <button
@@ -253,7 +257,7 @@ export function DesksPage() {
               onClick={() => setOnlyOpen((value) => !value)}
               aria-pressed={onlyOpen}
               className={clsx(
-                'inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold transition-colors focus-ring',
+                'inline-flex items-center justify-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold transition-colors focus-ring w-full sm:w-auto',
                 onlyOpen
                   ? 'border-emerald-200 bg-emerald-100 text-emerald-700'
                   : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
@@ -267,7 +271,7 @@ export function DesksPage() {
               onClick={() => setOnlyMine((value) => !value)}
               aria-pressed={onlyMine}
               className={clsx(
-                'inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold transition-colors focus-ring',
+                'inline-flex items-center justify-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold transition-colors focus-ring w-full sm:w-auto',
                 onlyMine
                   ? 'border-emerald-200 bg-emerald-100 text-emerald-700'
                   : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
@@ -281,7 +285,7 @@ export function DesksPage() {
               onClick={() => setOnlyWindow((value) => !value)}
               aria-pressed={onlyWindow}
               className={clsx(
-                'inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold transition-colors focus-ring',
+                'inline-flex items-center justify-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold transition-colors focus-ring w-full sm:w-auto',
                 onlyWindow
                   ? 'border-amber-200 bg-amber-100 text-amber-700'
                   : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
@@ -292,7 +296,7 @@ export function DesksPage() {
             </button>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
               {filteredDesks.length} desks
             </span>
@@ -412,7 +416,7 @@ export function DesksPage() {
 
       {reserveDeskId && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-lg animate-in fade-in zoom-in duration-200">
+          <div className="bg-white p-5 sm:p-6 rounded-2xl shadow-2xl w-full max-w-lg animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <h2 className="text-2xl font-bold mb-1 text-slate-800">Reserve desk</h2>
@@ -535,7 +539,7 @@ function DeskSidePanel({
 
   if (!desk) {
     return (
-      <aside className="rounded-3xl border border-white/60 bg-white/90 p-6 shadow-lg text-center">
+      <aside className="rounded-3xl border border-white/60 bg-white/90 p-4 sm:p-6 shadow-lg text-center">
         <p className="text-sm text-slate-500">Select a desk on the plan to see details.</p>
       </aside>
     );
@@ -559,7 +563,7 @@ function DeskSidePanel({
   const quickReserveDisabled = quickReserveId === desk.deskId;
 
   return (
-    <aside className="rounded-3xl border border-white/60 bg-white/90 p-6 shadow-lg space-y-4">
+    <aside className="rounded-3xl border border-white/60 bg-white/90 p-4 sm:p-6 shadow-lg space-y-4">
       <div className="flex items-start gap-3">
         <div className="h-12 w-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-semibold">
           {desk.number}
