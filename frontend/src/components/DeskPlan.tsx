@@ -78,8 +78,6 @@ export function DeskPlan({ desks, selectedDeskId, onSelectDesk, onActivateDesk, 
   const stageRef = useRef<Konva.Stage | null>(null);
   const [stageWidth, setStageWidth] = useState(900);
   const [hovered, setHovered] = useState<HoveredMeta | null>(null);
-  const [zoom, setZoom] = useState(1);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const element = containerRef.current;
@@ -225,43 +223,6 @@ export function DeskPlan({ desks, selectedDeskId, onSelectDesk, onActivateDesk, 
     }
   };
 
-  const zoomTo = (nextZoom: number, anchor?: { x: number; y: number }) => {
-    const clamped = clamp(nextZoom, 0.8, 1.8);
-    if (!anchor) {
-      setZoom(clamped);
-      return;
-    }
-
-    const oldScale = zoom;
-    const mousePointTo = {
-      x: (anchor.x - position.x) / oldScale,
-      y: (anchor.y - position.y) / oldScale,
-    };
-    const newPos = {
-      x: anchor.x - mousePointTo.x * clamped,
-      y: anchor.y - mousePointTo.y * clamped,
-    };
-    setZoom(clamped);
-    setPosition(newPos);
-  };
-
-  const resetView = () => {
-    setZoom(1);
-    setPosition({ x: 0, y: 0 });
-  };
-
-  const handleWheel = (event: Konva.KonvaEventObject<WheelEvent>) => {
-    event.evt.preventDefault();
-    const stage = stageRef.current;
-    if (!stage) return;
-    const pointer = stage.getPointerPosition();
-    if (!pointer) return;
-    const scaleBy = 1.06;
-    const direction = event.evt.deltaY > 0 ? -1 : 1;
-    const next = zoom * (direction > 0 ? scaleBy : 1 / scaleBy);
-    zoomTo(next, pointer);
-  };
-
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (sortedDesks.length === 0) return;
     const index = selectedDeskId ? sortedDesks.findIndex((desk) => desk.deskId === selectedDeskId) : -1;
@@ -339,32 +300,6 @@ export function DeskPlan({ desks, selectedDeskId, onSelectDesk, onActivateDesk, 
             <span className="h-2 w-2 rounded-full bg-slate-500" />
             Maintenance {statusCounts.maintenance}
           </span>
-          <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1 shadow-sm">
-            <button
-              type="button"
-              className="h-7 w-7 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 focus-ring"
-              onClick={() => zoomTo(zoom - 0.1)}
-              aria-label="Zoom out"
-            >
-              -
-            </button>
-            <button
-              type="button"
-              className="h-7 w-7 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 focus-ring"
-              onClick={resetView}
-              aria-label="Reset zoom"
-            >
-              1x
-            </button>
-            <button
-              type="button"
-              className="h-7 w-7 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 focus-ring"
-              onClick={() => zoomTo(zoom + 0.1)}
-              aria-label="Zoom in"
-            >
-              +
-            </button>
-          </div>
         </div>
       </div>
 
@@ -380,12 +315,6 @@ export function DeskPlan({ desks, selectedDeskId, onSelectDesk, onActivateDesk, 
           width={stageWidth}
           height={layout.height}
           draggable
-          scaleX={zoom}
-          scaleY={zoom}
-          x={position.x}
-          y={position.y}
-          onDragEnd={(event) => setPosition({ x: event.target.x(), y: event.target.y() })}
-          onWheel={handleWheel}
         >
           <Layer>
             <Rect
@@ -631,7 +560,7 @@ export function DeskPlan({ desks, selectedDeskId, onSelectDesk, onActivateDesk, 
         </Stage>
       </div>
       <p className="mt-3 text-xs text-slate-400">
-        Drag to pan, scroll to zoom, arrow keys to navigate, Enter to reserve.
+        Drag to pan, arrow keys to navigate, Enter to reserve.
       </p>
     </section>
   );
