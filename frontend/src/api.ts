@@ -1,7 +1,7 @@
 import type { DeskListItemDto, ProfileDto } from './types';
 
 // IMPORTANT: Ensure vite.config.ts includes proxy settings
-const BASE_URL = '/api'; 
+const BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '');
 
 export const api = {
   getProfile: async (): Promise<ProfileDto> => {
